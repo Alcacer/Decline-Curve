@@ -20,7 +20,7 @@ namespace Decline_Curve_Analysis
         private static string[] requiredColumns = { "time", "flow rate" };
         private static int count = 0;
         private static int firstHeaderNumber, secondHeaderNumber;
-        private static DataTable GetDataTable(string filePath)
+        private DataTable GetDataTable(string filePath)
         {
             
             DataTable dataTable = new DataTable();
@@ -34,6 +34,7 @@ namespace Decline_Curve_Analysis
                 if (check == null)
                 {
                     MessageBox.Show("No Data Found", "Empty File");
+                    DataListBox.Items.Clear();
                 }
                 else
                 {
@@ -45,6 +46,7 @@ namespace Decline_Curve_Analysis
                         lowercaseHeaders.Contains(requiredColumns[1])))
                     {
                         MessageBox.Show("The Required Columns are Missing.", "Missing Columns");
+                        DataListBox.Items.Clear();
                     }
                     else
                     {
@@ -84,6 +86,9 @@ namespace Decline_Curve_Analysis
                             }
                             dataTable.Rows.Add(dataRow);
                         }
+                        Graph graphForm = new Graph();
+                        graphForm.Show();
+                        this.Hide();
                     }
                 }
             }
@@ -111,11 +116,6 @@ namespace Decline_Curve_Analysis
             else
             {
                 DataTable dataTable = GetDataTable(DataListBox.Items[0].ToString());
-               
-                Graph graphForm = new Graph();
-                graphForm.Show();
-    
-                this.Hide();
             }
         }
         private void DataListBox_DragEnter(object sender, DragEventArgs e)
