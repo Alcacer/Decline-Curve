@@ -17,6 +17,7 @@ namespace Decline_Curve_Analysis
         {
             InitializeComponent();
         }
+        internal static DataTable dataTable = new DataTable();
         private static string[] requiredColumns = { "time", "flow rate" };
         private static int count = 0;
         private static int firstHeaderNumber, secondHeaderNumber;
@@ -35,18 +36,21 @@ namespace Decline_Curve_Analysis
                 {
                     MessageBox.Show("No Data Found", "Empty File");
                     DataListBox.Items.Clear();
+                    return null;
                 }
                 else
                 {
                     string[] headers = check.Split(',');
                     string[] lowercaseHeaders = headers.Select(x => x.ToLower()).ToArray();
 
+
                     //Checking if the headers in the selected file are in the requiredColumns array.
-                    if (!(lowercaseHeaders.Contains(requiredColumns[0]) && 
+                    if (!(lowercaseHeaders.Contains(requiredColumns[0]) &&
                         lowercaseHeaders.Contains(requiredColumns[1])))
                     {
                         MessageBox.Show("The Required Columns are Missing.", "Missing Columns");
                         DataListBox.Items.Clear();
+                        return null;
                     }
                     else
                     {
@@ -86,9 +90,6 @@ namespace Decline_Curve_Analysis
                             }
                             dataTable.Rows.Add(dataRow);
                         }
-                        Graph graphForm = new Graph();
-                        graphForm.Show();
-                        this.Hide();
                     }
                 }
             }
@@ -115,7 +116,13 @@ namespace Decline_Curve_Analysis
             }
             else
             {
-                DataTable dataTable = GetDataTable(DataListBox.Items[0].ToString());
+                dataTable = GetDataTable(DataListBox.Items[0].ToString());
+                if (dataTable != null)
+                {
+                    Graph graphForm = new Graph();
+                    graphForm.Show();
+                    this.Hide();
+                }
             }
         }
         private void DataListBox_DragEnter(object sender, DragEventArgs e)
@@ -124,7 +131,8 @@ namespace Decline_Curve_Analysis
 
             //Check to see if its just one file being dragged, and if it is indeed a file and not a folder,
             //and to check the extension of the file.
-            if (files != null && files.Length==1 && File.Exists(files[0]) && Path.GetExtension(files[0]).ToLower() == ".csv")
+            if (files != null && files.Length==1 && File.Exists(files[0]) && Path.
+                GetExtension(files[0]).ToLower() == ".csv")
             {
                 e.Effect = DragDropEffects.Copy;
             }

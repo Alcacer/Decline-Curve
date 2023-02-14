@@ -9,7 +9,7 @@ namespace Decline_Curve_Analysis
         {
             InitializeComponent();
         }
-        public static DataInput dataForm = new DataInput();
+        internal static DataInput dataForm = new DataInput();
         private void ProceedButton_Click(object sender, EventArgs e)
         {
             dataForm = new DataInput();

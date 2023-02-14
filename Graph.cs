@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Decline_Curve_Analysis.Home;
-
+using static Decline_Curve_Analysis.DataInput;
 
 namespace Decline_Curve_Analysis
 {
@@ -22,6 +22,8 @@ namespace Decline_Curve_Analysis
         private void Graph_Load(object sender, EventArgs e)
         {
             TabulizeResultsButton.Enabled = false;
+            DeclineGraph.DataSource = dataTable;
+            DeclineGraph.DataBind();
         }
 
         private void RunPredictionButton_Click(object sender, EventArgs e)
@@ -34,20 +36,17 @@ namespace Decline_Curve_Analysis
         {
             this.Close();
             dataForm.Show();
+            
         }
         private void Graph_Close(object sender, FormClosedEventArgs e)
         {
-            dataForm.Show();
+            Application.Exit();
         }
 
         private void TabulizeResultsButton_Click(object sender, EventArgs e)
         {
             Results resultForm = new Results();
             resultForm.ShowDialog();
-        }
-        public void Testing(DataTable dataTable)
-        {
-            DeclineGraph.DataSource = dataTable;
         }
     }
 }
