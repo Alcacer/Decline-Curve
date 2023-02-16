@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.RunPredictionButton = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
             this.TabulizeResultsButton = new System.Windows.Forms.Button();
             this.DeclineGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.GraphLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DeclineGraph)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,7 +86,7 @@
             chartArea1.AxisY.Title = "Flow Rate";
             chartArea1.Name = "ChartArea1";
             this.DeclineGraph.ChartAreas.Add(chartArea1);
-            this.DeclineGraph.Location = new System.Drawing.Point(3, 12);
+            this.DeclineGraph.Location = new System.Drawing.Point(3, 45);
             this.DeclineGraph.Name = "DeclineGraph";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
@@ -96,12 +98,24 @@
             this.DeclineGraph.TabIndex = 0;
             this.DeclineGraph.Text = "chart1";
             // 
+            // GraphLabel
+            // 
+            this.GraphLabel.AutoSize = true;
+            this.GraphLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GraphLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.GraphLabel.Location = new System.Drawing.Point(435, 9);
+            this.GraphLabel.Name = "GraphLabel";
+            this.GraphLabel.Size = new System.Drawing.Size(465, 37);
+            this.GraphLabel.TabIndex = 7;
+            this.GraphLabel.Text = "Exponential Decline Curve Analysis";
+            // 
             // Graph
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1264, 700);
+            this.Controls.Add(this.GraphLabel);
             this.Controls.Add(this.TabulizeResultsButton);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.RunPredictionButton);
@@ -117,6 +131,7 @@
             this.Load += new System.EventHandler(this.Graph_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DeclineGraph)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -125,5 +140,6 @@
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Button TabulizeResultsButton;
         private System.Windows.Forms.DataVisualization.Charting.Chart DeclineGraph;
+        private System.Windows.Forms.Label GraphLabel;
     }
 }

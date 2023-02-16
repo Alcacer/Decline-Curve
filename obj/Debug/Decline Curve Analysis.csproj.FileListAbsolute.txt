@@ -11,7 +11,6 @@ C:\Users\Alcacer\Desktop\Decline Curve Analysis\obj\Debug\Decline Curve Analysis
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\obj\Debug\Decline Curve Analysis.exe
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\obj\Debug\Decline Curve Analysis.pdb
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\obj\Debug\Decline_Curve_Analysis.Results.resources
-C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\CsvHelper.dll
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\Microsoft.Bcl.HashCode.dll
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\System.Buffers.dll
@@ -19,7 +18,6 @@ C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\System.Memory.dll
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\System.Numerics.Vectors.dll
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\System.Threading.Tasks.Extensions.dll
-C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\CsvHelper.xml
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\Microsoft.Bcl.HashCode.xml
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\System.Buffers.xml

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Decline_Curve_Analysis
@@ -69,6 +65,11 @@ namespace Decline_Curve_Analysis
                                 secondHeaderNumber = count;
                             }
                             count++;
+                            if (dataTable.Columns.Count == 2)
+                            {
+                                count = 0;
+                                break;
+                            }
                         }
                         // Read the rest of the data
                         while (!sr.EndOfStream)
@@ -90,6 +91,29 @@ namespace Decline_Curve_Analysis
                             }
                             dataTable.Rows.Add(dataRow);
                         }
+                        StringBuilder sb = new StringBuilder();
+                        int counter = 0;
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            if (counter == 0)
+                            {
+                                foreach (DataColumn column in dataTable.Columns)
+                                {
+                                    sb.Append(column + " ");
+                                }
+                                sb.AppendLine();
+                            }
+                            else
+                            {
+                                foreach (DataColumn column in dataTable.Columns)
+                                {
+                                    sb.Append(row[column] + " ");
+                                }
+                                sb.AppendLine();
+                            }
+                            counter++;
+                        }
+                        MessageBox.Show(sb.ToString());
                     }
                 }
             }
@@ -122,7 +146,7 @@ namespace Decline_Curve_Analysis
                     Graph graphForm = new Graph();
                     graphForm.Show();
                     this.Hide();
-                }
+                } 
             }
         }
         private void DataListBox_DragEnter(object sender, DragEventArgs e)
