@@ -27,3 +27,7 @@ C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\System.Runtime.Compile
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\obj\Debug\Decline Curve Analysis.csproj.CopyComplete
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\obj\Debug\Decline_Curve_Analysis.DataInput.resources
+C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\MathNet.Numerics.dll
+C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\System.ValueTuple.dll
+C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\MathNet.Numerics.xml
+C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\System.ValueTuple.xml

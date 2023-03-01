@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.RunPredictionButton = new System.Windows.Forms.Button();
@@ -78,10 +77,10 @@
             // DeclineGraph
             // 
             this.DeclineGraph.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.AxisX.Interval = 0.5D;
+            chartArea1.AxisX.Interval = 1D;
             chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
             chartArea1.AxisX.Title = "Time";
-            chartArea1.AxisY.Interval = 1D;
+            chartArea1.AxisY.Interval = 25D;
             chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
             chartArea1.AxisY.Title = "Flow Rate";
             chartArea1.Name = "ChartArea1";
@@ -96,7 +95,7 @@
             this.DeclineGraph.Series.Add(series1);
             this.DeclineGraph.Size = new System.Drawing.Size(1107, 643);
             this.DeclineGraph.TabIndex = 0;
-            this.DeclineGraph.Text = "chart1";
+            this.DeclineGraph.Text = "Decline Graph";
             // 
             // GraphLabel
             // 
