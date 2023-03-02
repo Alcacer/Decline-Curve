@@ -55,7 +55,7 @@ namespace Decline_Curve_Analysis
                             //Only going to add the required headers to the datatable.
                             if (Equals(header.ToLower(), requiredColumns[0].ToLower()))
                             {
-                                dataTable.Columns.Add(header);
+                                dataTable.Columns.Add(header.ToUpper());
                                 firstHeaderNumber = count;
                             }
                             else if (Equals(header.ToLower(), requiredColumns[1].ToLower()))

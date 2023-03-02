@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BacktoAnalysisButton = new System.Windows.Forms.Button();
             this.SaveTableButton = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flowRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.resultsDataGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.resultsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // BacktoAnalysisButton
@@ -44,7 +45,7 @@
             this.BacktoAnalysisButton.ForeColor = System.Drawing.Color.Black;
             this.BacktoAnalysisButton.Location = new System.Drawing.Point(406, 176);
             this.BacktoAnalysisButton.Name = "BacktoAnalysisButton";
-            this.BacktoAnalysisButton.Size = new System.Drawing.Size(138, 40);
+            this.BacktoAnalysisButton.Size = new System.Drawing.Size(137, 40);
             this.BacktoAnalysisButton.TabIndex = 1;
             this.BacktoAnalysisButton.Text = "Back to Analysis";
             this.BacktoAnalysisButton.UseVisualStyleBackColor = false;
@@ -57,57 +58,88 @@
             this.SaveTableButton.ForeColor = System.Drawing.Color.Black;
             this.SaveTableButton.Location = new System.Drawing.Point(406, 241);
             this.SaveTableButton.Name = "SaveTableButton";
-            this.SaveTableButton.Size = new System.Drawing.Size(138, 40);
+            this.SaveTableButton.Size = new System.Drawing.Size(137, 40);
             this.SaveTableButton.TabIndex = 3;
             this.SaveTableButton.Text = "Save Table";
             this.SaveTableButton.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // resultsDataGridView
             // 
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.timeDataGridViewTextBoxColumn,
-            this.flowRateDataGridViewTextBoxColumn});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 41);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(358, 375);
-            this.dataGridView1.TabIndex = 4;
-            // 
-            // timeDataGridViewTextBoxColumn
-            // 
-            this.timeDataGridViewTextBoxColumn.DataPropertyName = "Time";
-            this.timeDataGridViewTextBoxColumn.HeaderText = "Time";
-            this.timeDataGridViewTextBoxColumn.Name = "timeDataGridViewTextBoxColumn";
-            this.timeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // flowRateDataGridViewTextBoxColumn
-            // 
-            this.flowRateDataGridViewTextBoxColumn.DataPropertyName = "FlowRate";
-            this.flowRateDataGridViewTextBoxColumn.HeaderText = "FlowRate";
-            this.flowRateDataGridViewTextBoxColumn.Name = "flowRateDataGridViewTextBoxColumn";
-            this.flowRateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.resultsDataGridView.AllowUserToAddRows = false;
+            this.resultsDataGridView.AllowUserToDeleteRows = false;
+            this.resultsDataGridView.AllowUserToResizeColumns = false;
+            this.resultsDataGridView.AllowUserToResizeRows = false;
+            this.resultsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.resultsDataGridView.BackgroundColor = System.Drawing.Color.Azure;
+            this.resultsDataGridView.CausesValidation = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.resultsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.resultsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.resultsDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.resultsDataGridView.GridColor = System.Drawing.Color.Black;
+            this.resultsDataGridView.Location = new System.Drawing.Point(12, 41);
+            this.resultsDataGridView.Name = "resultsDataGridView";
+            this.resultsDataGridView.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.resultsDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.resultsDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle4.NullValue = null;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            this.resultsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.resultsDataGridView.RowTemplate.ReadOnly = true;
+            this.resultsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.resultsDataGridView.ShowCellErrors = false;
+            this.resultsDataGridView.ShowCellToolTips = false;
+            this.resultsDataGridView.ShowEditingIcon = false;
+            this.resultsDataGridView.ShowRowErrors = false;
+            this.resultsDataGridView.Size = new System.Drawing.Size(358, 375);
+            this.resultsDataGridView.TabIndex = 4;    
             // 
             // Results
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(584, 461);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.resultsDataGridView);
             this.Controls.Add(this.SaveTableButton);
             this.Controls.Add(this.BacktoAnalysisButton);
             this.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.SteelBlue;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.MaximumSize = new System.Drawing.Size(600, 500);
             this.Name = "Results";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Results";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Results_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.resultsDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -115,7 +147,7 @@
         #endregion
         private System.Windows.Forms.Button BacktoAnalysisButton;
         private System.Windows.Forms.Button SaveTableButton;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView resultsDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn flowRateDataGridViewTextBoxColumn;
     }

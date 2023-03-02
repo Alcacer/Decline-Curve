@@ -24,6 +24,7 @@ namespace Decline_Curve_Analysis
             InitializeComponent();
         }
 
+        internal static DataTable resultsTable = new DataTable();
         private void Graph_Load(object sender, EventArgs e)
         {
             TabulizeResultsButton.Enabled = false;
@@ -31,7 +32,6 @@ namespace Decline_Curve_Analysis
             DeclineGraph.DataBind();
         }
         
-
         private void CalculateExponentialDecline(DataTable productionData, int forecastDays, double timeIncrement)
         {
             // Extract the production and time data from the input DataTable
@@ -57,11 +57,22 @@ namespace Decline_Curve_Analysis
 
             // Print the results
             MessageBox.Show($"Initial production rate (Q0): {Q0}\nDecline rate (D): {D}");
+            DataRow[] dataRows = new DataRow[forecastDays];
             for (int i = 0; i < forecastDays; i++)
             {
+                DataRow row = productionData.NewRow();
                 DeclineGraph.Series["DeclineSeries"].Points.AddXY(futureTime[i].ToShortDateString(), futureProduction[i]);
-                DeclineGraph.Series["DeclineSeries"].Points[productionData.Rows.Count + i].Color = Color.Red; 
+                DeclineGraph.Series["DeclineSeries"].Points[productionData.Rows.Count + i].Color = Color.Red;
+                row[0] = futureTime[i].ToShortDateString();
+                row[1] = futureProduction[i];
+                dataRows[i] = row;
             }
+            foreach (DataRow row in dataRows)
+            {
+                productionData.Rows.Add(row);
+                string thisa = "this is a string";
+            }
+            resultsTable = productionData;
         }
 
 
