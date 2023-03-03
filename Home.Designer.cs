@@ -79,7 +79,7 @@
             this.Controls.Add(this.HomeDescriptionLabel);
             this.Controls.Add(this.HomeHeaderLabel);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(527, 350);

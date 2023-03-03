@@ -56,7 +56,7 @@ namespace Decline_Curve_Analysis
                                                                                                               //before getting the days from the resulting timespan. 
 
             // Print the results
-            MessageBox.Show($"Initial production rate (Q0): {Q0}\nDecline rate (D): {D}");
+            MessageBox.Show($"Initial production rate (Q0): {Q0}\n\nDecline rate (D): {D}", "Results");
             DataRow[] dataRows = new DataRow[forecastDays];
             for (int i = 0; i < forecastDays; i++)
             {
@@ -87,16 +87,22 @@ namespace Decline_Curve_Analysis
 
         private void BackButton_Click(object sender, EventArgs e)
         {
+            closeReason = "backbutton";
             this.Close();
         }
-        private void Graph_Close(object sender, FormClosedEventArgs e)
+        string closeReason;
+        private void Graph_Closed(object sender, FormClosedEventArgs e)
         {
-            dataForm.Show();
-            // TODO - Try and see if the X button alone can be targeted, so that if the X button is pressed
-            //It closes the whole application; but if the back button is pressed, which actually closes the
-            //form and triggers this function too, it still goes back to the data input form.
+            //Make the whole application close if the X button or Alt + F4 is pressed, but not when the back button is pressed.
+            if (closeReason == "backbutton")
+            {
+                dataForm.Show();
+            }
+            else
+            {
+                dataForm.Close();
+            }
         }
-
         private void TabulizeResultsButton_Click(object sender, EventArgs e)
         {
             Results resultForm = new Results();

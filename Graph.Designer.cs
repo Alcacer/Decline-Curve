@@ -126,7 +126,7 @@
             this.Name = "Graph";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Graph";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Graph_Close);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Graph_Closed);
             this.Load += new System.EventHandler(this.Graph_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DeclineGraph)).EndInit();
             this.ResumeLayout(false);
