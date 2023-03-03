@@ -64,13 +64,12 @@ namespace Decline_Curve_Analysis
                 DeclineGraph.Series["DeclineSeries"].Points.AddXY(futureTime[i].ToShortDateString(), futureProduction[i]);
                 DeclineGraph.Series["DeclineSeries"].Points[productionData.Rows.Count + i].Color = Color.Red;
                 row[0] = futureTime[i].ToShortDateString();
-                row[1] = futureProduction[i];
-                dataRows[i] = row;
+                row[1] = Math.Round(futureProduction[i], 2, MidpointRounding.AwayFromZero); //rounds the calculated future production data
+                dataRows[i] = row;                                                          //to 2 decimal places at most.
             }
             foreach (DataRow row in dataRows)
             {
                 productionData.Rows.Add(row);
-                string thisa = "this is a string";
             }
             resultsTable = productionData;
         }
