@@ -99,8 +99,7 @@ namespace Decline_Curve_Analysis
 
         private void browseButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
+            OpenFileDialog openFileDialog = new OpenFileDialog { Filter = "CSV Files (*.csv)|*.csv" };
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 DataListBox.Items.Clear();
@@ -114,6 +113,7 @@ namespace Decline_Curve_Analysis
             {
                 MessageBox.Show("Please Enter a File into the Box", "No File Found");
             }
+            //TODO - Check the contents of the rows in the datatable, especially the production data, to see if there are any blanks or non-numbers mixed in.
             else
             {
                 dataTable = GetDataTable(DataListBox.Items[0].ToString());
@@ -127,7 +127,7 @@ namespace Decline_Curve_Analysis
         }
         private void DataListBox_DragEnter(object sender, DragEventArgs e)
         {
-            string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop); //casts the object as an array to make it easier to work with
+            string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop); //casts the object as an array to make it easier to work with.
 
             //Check to see if its just one file being dragged, and if it is indeed a file and not a folder,
             //and to check the extension of the file.
@@ -147,7 +147,7 @@ namespace Decline_Curve_Analysis
             string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop);
             DataListBox.Items.Add(files.First());
         }
-        //Closes all open forms including the hidden home form as there is no need to go back to that form
+        //Closes all open forms including the hidden home form as there is no need to go back to that form.
         private void DataInput_Close(object sender, FormClosedEventArgs e)
         {
             Application.Exit();

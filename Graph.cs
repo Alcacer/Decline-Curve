@@ -90,7 +90,7 @@ namespace Decline_Curve_Analysis
             closeReason = "backbutton";
             this.Close();
         }
-        string closeReason;
+        private string closeReason;
         private void Graph_Closed(object sender, FormClosedEventArgs e)
         {
             //Make the whole application close if the X button or Alt + F4 is pressed, but not when the back button is pressed.
