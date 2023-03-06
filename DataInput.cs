@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -14,7 +15,6 @@ namespace Decline_Curve_Analysis
         }
         internal static DataTable dataTable = new DataTable();
         private static string[] requiredColumns = { "time", "flow rate" };
-        private static int count = 0;
         private static int firstHeaderNumber, secondHeaderNumber;
         private DataTable GetDataTable(string filePath)
         {
@@ -36,58 +36,41 @@ namespace Decline_Curve_Analysis
                 else
                 {
                     string[] headers = check.Split(',');
-                    string[] lowercaseHeaders = headers.Select(x => x.ToLower()).ToArray();
+                    List<string> lowercaseHeaders = headers.Select(x => x.ToLower()).ToList();
 
 
                     //Checking if the headers in the selected file are in the requiredColumns array.
                     if (!(lowercaseHeaders.Contains(requiredColumns[0]) &&
                         lowercaseHeaders.Contains(requiredColumns[1])))
                     {
-                        MessageBox.Show("The Required Columns are Missing.", "Missing Columns");
+                        MessageBox.Show("The Required Columns are Missing.\n" +
+                            "Please make sure you have both Time and Flow Rate columns in your file.", "Missing Columns");
                         DataListBox.Items.Clear();
                         return null;
                     }
                     else
                     {
                         // Add the headers to the DataTable
-                        foreach (string header in headers)
-                        {
-                            //Only going to add the required headers to the datatable.
-                            if (Equals(header.ToLower(), requiredColumns[0].ToLower()))
-                            {
-                                dataTable.Columns.Add(header);
-                                firstHeaderNumber = count;
-                            }
-                            else if (Equals(header.ToLower(), requiredColumns[1].ToLower()))
-                            {
-                                dataTable.Columns.Add(header);
-                                secondHeaderNumber = count;
-                            }
-                            count++;
-                            if (dataTable.Columns.Count == 2)
-                            {
-                                count = 0;
-                                break;
-                            }
-                        }
+                        firstHeaderNumber = lowercaseHeaders.IndexOf("time");
+                        secondHeaderNumber = lowercaseHeaders.IndexOf("flow rate");
+                        dataTable.Columns.Add(lowercaseHeaders[firstHeaderNumber]);
+                        dataTable.Columns.Add(lowercaseHeaders[secondHeaderNumber]);
                         // Read the rest of the data
                         while (!sr.EndOfStream)
                         {
                             string[] rows = sr.ReadLine().Split(',');
                             DataRow dataRow = dataTable.NewRow();
-                            for (int i = 0; i < headers.Length; i++)
+                            dataRow[0] = rows[firstHeaderNumber]; 
+                           //Check to see if the values in the csv file are actually numbers
+                            if (Double.TryParse(rows[secondHeaderNumber], out double resultRow))
                             {
-                                //Only going to add the fields of the required headers to the row
-                                if (i == firstHeaderNumber)
-                                {
-                                    dataRow[0] = rows[firstHeaderNumber];
-                                }
-                                else if (i == secondHeaderNumber)
-                                {
-                                    dataRow[1] = rows[secondHeaderNumber];
-                                    break;
-                                }
+                                dataRow[1] = resultRow;
                             }
+                            else
+                            {
+                                MessageBox.Show("Some of the data in your file are not numbers.", "Unsupported Format");
+                                return null;
+                            } 
                             dataTable.Rows.Add(dataRow);
                         }
                     }

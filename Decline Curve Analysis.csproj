@@ -75,14 +75,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data Analysis.cs" />
     <Compile Include="DataInput.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DataInput.Designer.cs">
       <DependentUpon>DataInput.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graph Analysis.cs" />
     <Compile Include="Graph.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,7 +101,6 @@
     <Compile Include="Results.Designer.cs">
       <DependentUpon>Results.cs</DependentUpon>
     </Compile>
-    <Compile Include="ResultsTable.cs" />
     <EmbeddedResource Include="DataInput.resx">
       <DependentUpon>DataInput.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,16 +123,13 @@
       <DependentUpon>Results.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\DataAnalysis.datasource" />
     <None Include="Properties\DataSources\DataInput.datasource" />
     <None Include="Properties\DataSources\Decline_Curve_Analysis.Properties.Resources.datasource" />
     <None Include="Properties\DataSources\Decline_Curve_Analysis.Properties.Settings.datasource" />
     <None Include="Properties\DataSources\Graph.datasource" />
-    <None Include="Properties\DataSources\GraphAnalysis.datasource" />
     <None Include="Properties\DataSources\Home.datasource" />
     <None Include="Properties\DataSources\Program.datasource" />
     <None Include="Properties\DataSources\Results.datasource" />
-    <None Include="Properties\DataSources\ResultsTable.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
