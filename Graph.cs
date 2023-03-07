@@ -1,19 +1,12 @@
 ﻿using MathNet.Numerics;
-using MathNet.Numerics.LinearRegression;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Decline_Curve_Analysis.Home;
 using static Decline_Curve_Analysis.DataInput;
-using MathNet.Numerics.Distributions;
-using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Decline_Curve_Analysis
 {
@@ -28,10 +21,14 @@ namespace Decline_Curve_Analysis
         private void Graph_Load(object sender, EventArgs e)
         {
             TabulizeResultsButton.Enabled = false;
+            DeclineGraph.ChartAreas[0].AxisX.Title = dataTable.Columns[0].ToString();
+            DeclineGraph.ChartAreas[0].AxisY.Title = dataTable.Columns[1].ToString();
+            DeclineGraph.Series[0].XValueMember = dataTable.Columns[0].ToString();
+            DeclineGraph.Series[0].YValueMembers = dataTable.Columns[1].ToString();
             DeclineGraph.DataSource = dataTable;
             DeclineGraph.DataBind();
         }
-        
+         
         private void CalculateExponentialDecline(DataTable productionData, int forecastDays, double timeIncrement)
         {
             // Extract the production and time data from the input DataTable
@@ -42,8 +39,8 @@ namespace Decline_Curve_Analysis
             double[] xData = time.Select(r => (double)r.Day).ToArray();
             double[] yData = production.Select(r => Math.Log(r)).ToArray();
             var regressionResult = Fit.Line(xData, yData);
-            var Q0 = Math.Exp(regressionResult.Item1);
-            double D = -regressionResult.Item2;
+            var Q0 = Math.Exp(regressionResult.A);
+            double D = -regressionResult.B;
 
             // Calculate the predicted production values for the future time period
             DateTime lastTime = time[time.Length - 1];
@@ -67,6 +64,7 @@ namespace Decline_Curve_Analysis
                 row[1] = Math.Round(futureProduction[i], 2, MidpointRounding.AwayFromZero); //rounds the calculated future production data
                 dataRows[i] = row;                                                          //to 2 decimal places at most.
             }
+
             foreach (DataRow row in dataRows)
             {
                 productionData.Rows.Add(row);
@@ -80,8 +78,7 @@ namespace Decline_Curve_Analysis
             CalculateExponentialDecline(dataTable, 10, 1);
             TabulizeResultsButton.Enabled = true;
             RunPredictionButton.Enabled = false;
-            //TODO - When this button is clicked the window should be maximized and therefore fit the screen of the system, whatever the
-            //size of the system is. Then the buttons and the graph should be docked to prevent it from being scattered when maximized.
+            this.WindowState = FormWindowState.Maximized;
         }
         
 

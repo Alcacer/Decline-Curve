@@ -14,7 +14,7 @@ namespace Decline_Curve_Analysis
             InitializeComponent();
         }
         internal static DataTable dataTable = new DataTable();
-        private static string[] requiredColumns = { "time", "flow rate" };
+        private static readonly string[] requiredColumns = { "time", "flow rate" };
         private static int firstHeaderNumber, secondHeaderNumber;
         private DataTable GetDataTable(string filePath)
         {
@@ -29,7 +29,7 @@ namespace Decline_Curve_Analysis
                 //use the Split method on a Null variable, it'll just give you some type of Null error.
                 if (check == null)
                 {
-                    MessageBox.Show("No Data Found", "Empty File");
+                    MessageBox.Show("No Data Found.", "Empty File");
                     DataListBox.Items.Clear();
                     return null;
                 }
@@ -44,17 +44,17 @@ namespace Decline_Curve_Analysis
                         lowercaseHeaders.Contains(requiredColumns[1])))
                     {
                         MessageBox.Show("The Required Columns are Missing.\n" +
-                            "Please make sure you have both Time and Flow Rate columns in your file.", "Missing Columns");
+                            $"Please make sure you have both {requiredColumns[0]} and {requiredColumns[1]} columns in your file.", "Missing Columns");
                         DataListBox.Items.Clear();
                         return null;
                     }
                     else
                     {
                         // Add the headers to the DataTable
-                        firstHeaderNumber = lowercaseHeaders.IndexOf("time");
-                        secondHeaderNumber = lowercaseHeaders.IndexOf("flow rate");
-                        dataTable.Columns.Add(lowercaseHeaders[firstHeaderNumber]);
-                        dataTable.Columns.Add(lowercaseHeaders[secondHeaderNumber]);
+                        firstHeaderNumber = lowercaseHeaders.IndexOf(requiredColumns[0]);
+                        secondHeaderNumber = lowercaseHeaders.IndexOf(requiredColumns[1]);
+                        dataTable.Columns.Add(headers[firstHeaderNumber]);
+                        dataTable.Columns.Add(headers[secondHeaderNumber]);
                         // Read the rest of the data
                         while (!sr.EndOfStream)
                         {
@@ -68,7 +68,7 @@ namespace Decline_Curve_Analysis
                             }
                             else
                             {
-                                MessageBox.Show("Some of the data in your file are not numbers.", "Unsupported Format");
+                                MessageBox.Show("Some of the data in your file are not digits.", "Unsupported Format");
                                 return null;
                             } 
                             dataTable.Rows.Add(dataRow);

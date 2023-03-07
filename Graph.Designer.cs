@@ -40,6 +40,7 @@
             // 
             // RunPredictionButton
             // 
+            this.RunPredictionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.RunPredictionButton.BackColor = System.Drawing.Color.Azure;
             this.RunPredictionButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RunPredictionButton.Location = new System.Drawing.Point(1116, 354);
@@ -52,6 +53,7 @@
             // 
             // BackButton
             // 
+            this.BackButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BackButton.BackColor = System.Drawing.Color.Azure;
             this.BackButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BackButton.Location = new System.Drawing.Point(1116, 480);
@@ -64,6 +66,7 @@
             // 
             // TabulizeResultsButton
             // 
+            this.TabulizeResultsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.TabulizeResultsButton.BackColor = System.Drawing.Color.Azure;
             this.TabulizeResultsButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TabulizeResultsButton.Location = new System.Drawing.Point(1116, 414);
@@ -76,24 +79,24 @@
             // 
             // DeclineGraph
             // 
+            this.DeclineGraph.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DeclineGraph.BackColor = System.Drawing.Color.Transparent;
             chartArea1.AxisX.Interval = 1D;
             chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea1.AxisX.Title = "Time";
             chartArea1.AxisY.Interval = 25D;
             chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea1.AxisY.Title = "Flow Rate";
             chartArea1.Name = "ChartArea1";
             this.DeclineGraph.ChartAreas.Add(chartArea1);
-            this.DeclineGraph.Location = new System.Drawing.Point(3, 45);
+            this.DeclineGraph.Location = new System.Drawing.Point(0, 45);
             this.DeclineGraph.Name = "DeclineGraph";
+            series1.BorderWidth = 0;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
             series1.Name = "DeclineSeries";
-            series1.XValueMember = "time";
-            series1.YValueMembers = "flow rate";
             this.DeclineGraph.Series.Add(series1);
-            this.DeclineGraph.Size = new System.Drawing.Size(1107, 643);
+            this.DeclineGraph.Size = new System.Drawing.Size(1151, 643);
             this.DeclineGraph.TabIndex = 0;
             this.DeclineGraph.Text = "Decline Graph";
             // 
