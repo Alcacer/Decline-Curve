@@ -14,7 +14,7 @@ namespace Decline_Curve_Analysis
             InitializeComponent();
         }
         internal static DataTable dataTable = new DataTable();
-        private static readonly string[] requiredColumns = { "time", "flow rate" };
+        private static readonly string[] requiredColumns = { "days", "production rate" };
         private static int firstHeaderNumber, secondHeaderNumber;
         private DataTable GetDataTable(string filePath)
         {
@@ -43,8 +43,8 @@ namespace Decline_Curve_Analysis
                     if (!(lowercaseHeaders.Contains(requiredColumns[0]) &&
                         lowercaseHeaders.Contains(requiredColumns[1])))
                     {
-                        MessageBox.Show("The Required Columns are Missing.\n" +
-                            $"Please make sure you have both {requiredColumns[0]} and {requiredColumns[1]} columns in your file.", "Missing Columns");
+                        MessageBox.Show("The required columns could not be found.\n" +
+                            $"Please make sure you have both the {requiredColumns[0]} and {requiredColumns[1]} columns in your file.", "Missing Columns");
                         DataListBox.Items.Clear();
                         return null;
                     }
@@ -60,15 +60,23 @@ namespace Decline_Curve_Analysis
                         {
                             string[] rows = sr.ReadLine().Split(',');
                             DataRow dataRow = dataTable.NewRow();
-                            dataRow[0] = rows[firstHeaderNumber]; 
-                           //Check to see if the values in the csv file are actually numbers
-                            if (Double.TryParse(rows[secondHeaderNumber], out double resultRow))
+                            //Check to see if the values in the csv file are actually numbers
+                            if (double.TryParse(rows[firstHeaderNumber], out double firstResultRow))
                             {
-                                dataRow[1] = resultRow;
+                                dataRow[0] = firstResultRow;
                             }
                             else
                             {
-                                MessageBox.Show("Some of the data in your file are not digits.", "Unsupported Format");
+                                MessageBox.Show($"Some of the data in the {dataTable.Columns[0]} column are not numbers.", "Unsupported Format");
+                                return null;
+                            }
+                            if (Double.TryParse(rows[secondHeaderNumber], out double secondResultRow))
+                            {
+                                dataRow[1] = secondResultRow;
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Some of the data in the {dataTable.Columns[1]} column are not numbers.", "Unsupported Format");
                                 return null;
                             } 
                             dataTable.Rows.Add(dataRow);

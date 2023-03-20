@@ -82,8 +82,8 @@
             this.DataListBox.Name = "DataListBox";
             this.DataListBox.Size = new System.Drawing.Size(317, 211);
             this.DataListBox.TabIndex = 4;
-            this.DataListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.DataListBox_DragEnter);
             this.DataListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.DataListBox_DragDrop);
+            this.DataListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.DataListBox_DragEnter);
             // 
             // browseButton
             // 

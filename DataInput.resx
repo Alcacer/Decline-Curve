@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DataInputDescriptionLabel.Text" xml:space="preserve">
-    <value>Browse to or drag and drop the relevant data file into the box. Ensure that the selected file has both the Time and the Oil Rate columns present. Only one file can be accepted at a time and it must be a CSV file.</value>
+    <value>Browse to or drag and drop the relevant file into the box. Ensure that the selected file has both the Days and the Production Rate columns present. Only one file can be accepted at a time and it must be a CSV file.</value>
   </data>
 </root>
