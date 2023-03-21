@@ -33,7 +33,8 @@
             this.AnalyseDataButton = new System.Windows.Forms.Button();
             this.DataInputDescriptionLabel = new System.Windows.Forms.Label();
             this.DataListBox = new System.Windows.Forms.ListBox();
-            this.browseButton = new System.Windows.Forms.Button();
+            this.BrowseButton = new System.Windows.Forms.Button();
+            this.DifferentColumnsLinkLabel = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // DataInputLabel
@@ -85,18 +86,36 @@
             this.DataListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.DataListBox_DragDrop);
             this.DataListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.DataListBox_DragEnter);
             // 
-            // browseButton
+            // BrowseButton
             // 
-            this.browseButton.BackColor = System.Drawing.Color.Azure;
-            this.browseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.browseButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.browseButton.Location = new System.Drawing.Point(154, 328);
-            this.browseButton.Name = "browseButton";
-            this.browseButton.Size = new System.Drawing.Size(75, 32);
-            this.browseButton.TabIndex = 5;
-            this.browseButton.Text = "Browse";
-            this.browseButton.UseVisualStyleBackColor = false;
-            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
+            this.BrowseButton.BackColor = System.Drawing.Color.Azure;
+            this.BrowseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BrowseButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BrowseButton.Location = new System.Drawing.Point(154, 328);
+            this.BrowseButton.Name = "BrowseButton";
+            this.BrowseButton.Size = new System.Drawing.Size(75, 32);
+            this.BrowseButton.TabIndex = 5;
+            this.BrowseButton.Text = "Browse";
+            this.BrowseButton.UseVisualStyleBackColor = false;
+            this.BrowseButton.Click += new System.EventHandler(this.BrowseButton_Click);
+            // 
+            // DifferentColumnsLinkLabel
+            // 
+            this.DifferentColumnsLinkLabel.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.DifferentColumnsLinkLabel.AutoSize = true;
+            this.DifferentColumnsLinkLabel.DisabledLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.DifferentColumnsLinkLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DifferentColumnsLinkLabel.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.DifferentColumnsLinkLabel.LinkColor = System.Drawing.Color.RoyalBlue;
+            this.DifferentColumnsLinkLabel.Location = new System.Drawing.Point(430, 346);
+            this.DifferentColumnsLinkLabel.Name = "DifferentColumnsLinkLabel";
+            this.DifferentColumnsLinkLabel.Size = new System.Drawing.Size(163, 17);
+            this.DifferentColumnsLinkLabel.TabIndex = 6;
+            this.DifferentColumnsLinkLabel.TabStop = true;
+            this.DifferentColumnsLinkLabel.Text = "Columns named differently?";
+            this.DifferentColumnsLinkLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.DifferentColumnsLinkLabel.Visible = false;
+            this.DifferentColumnsLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.DifferentColumnsLinkLabel_LinkClicked);
             // 
             // DataInput
             // 
@@ -105,7 +124,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(660, 483);
-            this.Controls.Add(this.browseButton);
+            this.Controls.Add(this.DifferentColumnsLinkLabel);
+            this.Controls.Add(this.BrowseButton);
             this.Controls.Add(this.DataListBox);
             this.Controls.Add(this.DataInputDescriptionLabel);
             this.Controls.Add(this.AnalyseDataButton);
@@ -130,6 +150,7 @@
         private System.Windows.Forms.Button AnalyseDataButton;
         private System.Windows.Forms.Label DataInputDescriptionLabel;
         private System.Windows.Forms.ListBox DataListBox;
-        private System.Windows.Forms.Button browseButton;
+        private System.Windows.Forms.Button BrowseButton;
+        private System.Windows.Forms.LinkLabel DifferentColumnsLinkLabel;
     }
 }

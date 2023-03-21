@@ -75,6 +75,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColumnNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColumnNameForm.Designer.cs">
+      <DependentUpon>ColumnNameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataInput.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     <Compile Include="Results.Designer.cs">
       <DependentUpon>Results.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ColumnNameForm.resx">
+      <DependentUpon>ColumnNameForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataInput.resx">
       <DependentUpon>DataInput.cs</DependentUpon>
     </EmbeddedResource>

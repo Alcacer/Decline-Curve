@@ -14,7 +14,7 @@ namespace Decline_Curve_Analysis
         {
             dataForm = new DataInput();
             dataForm.Show();
-            this.Hide();
+            Hide();
         }
     }
 }

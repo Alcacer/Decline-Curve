@@ -14,8 +14,9 @@ namespace Decline_Curve_Analysis
             InitializeComponent();
         }
         internal static DataTable dataTable = new DataTable();
-        private static readonly string[] requiredColumns = { "days", "production rate" };
+        internal static List<string> requiredColumns = new List<string> { "days", "production rate" };
         private static int firstHeaderNumber, secondHeaderNumber;
+
         private DataTable GetDataTable(string filePath)
         {
             
@@ -36,8 +37,7 @@ namespace Decline_Curve_Analysis
                 else
                 {
                     string[] headers = check.Split(',');
-                    List<string> lowercaseHeaders = headers.Select(x => x.ToLower()).ToList();
-
+                    List<string> lowercaseHeaders = headers.Select(x => x.ToLower()).ToList() ;
 
                     //Checking if the headers in the selected file are in the requiredColumns array.
                     if (!(lowercaseHeaders.Contains(requiredColumns[0]) &&
@@ -45,7 +45,10 @@ namespace Decline_Curve_Analysis
                     {
                         MessageBox.Show("The required columns could not be found.\n" +
                             $"Please make sure you have both the {requiredColumns[0]} and {requiredColumns[1]} columns in your file.", "Missing Columns");
-                        DataListBox.Items.Clear();
+                        if (!DifferentColumnsLinkLabel.Visible)
+                        {
+                            DifferentColumnsLinkLabel.Show();
+                        }
                         return null;
                     }
                     else
@@ -70,7 +73,7 @@ namespace Decline_Curve_Analysis
                                 MessageBox.Show($"Some of the data in the {dataTable.Columns[0]} column are not numbers.", "Unsupported Format");
                                 return null;
                             }
-                            if (Double.TryParse(rows[secondHeaderNumber], out double secondResultRow))
+                            if (double.TryParse(rows[secondHeaderNumber], out double secondResultRow))
                             {
                                 dataRow[1] = secondResultRow;
                             }
@@ -88,7 +91,7 @@ namespace Decline_Curve_Analysis
         }
 
 
-        private void browseButton_Click(object sender, EventArgs e)
+        private void BrowseButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog { Filter = "CSV Files (*.csv)|*.csv" };
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -112,7 +115,7 @@ namespace Decline_Curve_Analysis
                 {
                     Graph graphForm = new Graph();
                     graphForm.Show();
-                    this.Hide();
+                    Hide();
                 } 
             }
         }
@@ -138,6 +141,13 @@ namespace Decline_Curve_Analysis
             string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop);
             DataListBox.Items.Add(files.First());
         }
+
+        private void DifferentColumnsLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ColumnNameForm columnNameForm = new ColumnNameForm();
+            columnNameForm.ShowDialog();
+        }
+
         //Closes all open forms including the hidden home form as there is no need to go back to that form.
         private void DataInput_Close(object sender, FormClosedEventArgs e)
         {

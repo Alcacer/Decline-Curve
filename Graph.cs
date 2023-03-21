@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 using static Decline_Curve_Analysis.Home;
 using static Decline_Curve_Analysis.DataInput;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Decline_Curve_Analysis
 {
@@ -27,7 +28,7 @@ namespace Decline_Curve_Analysis
             //For the data points
             DeclineGraph.Series[0].XValueMember = dataTable.Columns[0].ToString();
             DeclineGraph.Series[0].YValueMembers = dataTable.Columns[1].ToString();
-            
+
             //For the line through the data points
             DeclineGraph.Series[1].XValueMember = dataTable.Columns[0].ToString();
             DeclineGraph.Series[1].YValueMembers = dataTable.Columns[1].ToString();
@@ -70,7 +71,7 @@ namespace Decline_Curve_Analysis
                 row[1] = Math.Round(futureProduction[i], 2, MidpointRounding.AwayFromZero); //rounds the calculated future production data
                 dataRows[i] = row;                                                          //to 2 decimal places at most.
             }
-
+            //Add the predicted values to the datatable to display it in the results form
             foreach (DataRow row in dataRows)
             {
                 productionData.Rows.Add(row);
@@ -84,16 +85,15 @@ namespace Decline_Curve_Analysis
             CalculateExponentialDecline(dataTable, 10);
             TabulizeResultsButton.Enabled = true;
             RunPredictionButton.Enabled = false;
-            this.WindowState = FormWindowState.Maximized;
+            WindowState = FormWindowState.Maximized;
         }
-        
 
+        private string closeReason;
         private void BackButton_Click(object sender, EventArgs e)
         {
             closeReason = "backbutton";
-            this.Close();
+            Close();
         }
-        private string closeReason;
         private void Graph_Closed(object sender, FormClosedEventArgs e)
         {
             //Make the whole application close if the X button or Alt + F4 is pressed, but not when the back button is pressed.

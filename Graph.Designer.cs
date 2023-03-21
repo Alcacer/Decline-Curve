@@ -1,4 +1,6 @@
-﻿namespace Decline_Curve_Analysis
+﻿using static Decline_Curve_Analysis.DataInput;
+
+namespace Decline_Curve_Analysis
 {
     partial class Graph
     {
@@ -30,6 +32,7 @@
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.RunPredictionButton = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
             this.TabulizeResultsButton = new System.Windows.Forms.Button();
@@ -95,9 +98,11 @@
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
             series1.Name = "DeclineSeries";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Name = "Line";
             this.DeclineGraph.Series.Add(series1);
-            this.DeclineGraph.Series.Add("Line");
-            this.DeclineGraph.Series["Line"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            this.DeclineGraph.Series.Add(series2);
             this.DeclineGraph.Size = new System.Drawing.Size(1151, 643);
             this.DeclineGraph.TabIndex = 0;
             this.DeclineGraph.Text = "Decline Graph";
