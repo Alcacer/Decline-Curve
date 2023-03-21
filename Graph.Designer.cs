@@ -96,6 +96,8 @@
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
             series1.Name = "DeclineSeries";
             this.DeclineGraph.Series.Add(series1);
+            this.DeclineGraph.Series.Add("Line");
+            this.DeclineGraph.Series["Line"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             this.DeclineGraph.Size = new System.Drawing.Size(1151, 643);
             this.DeclineGraph.TabIndex = 0;
             this.DeclineGraph.Text = "Decline Graph";
