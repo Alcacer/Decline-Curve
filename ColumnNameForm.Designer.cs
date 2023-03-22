@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColumnNameForm));
             this.SpecifyColumnsLabel = new System.Windows.Forms.Label();
             this.DaysLabel = new System.Windows.Forms.Label();
             this.ProductionColumnLabel = new System.Windows.Forms.Label();
@@ -118,6 +119,7 @@
             this.Controls.Add(this.DaysLabel);
             this.Controls.Add(this.SpecifyColumnsLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ColumnNameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Specify Columns in File";

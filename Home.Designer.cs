@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.HomeHeaderLabel = new System.Windows.Forms.Label();
             this.HomeDescriptionLabel = new System.Windows.Forms.Label();
             this.ProceedButton = new System.Windows.Forms.Button();
@@ -80,10 +81,12 @@
             this.Controls.Add(this.HomeHeaderLabel);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(527, 350);
             this.Name = "Home";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Decline Curve Analysis";
             this.ResumeLayout(false);

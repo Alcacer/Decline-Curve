@@ -107,7 +107,6 @@ namespace Decline_Curve_Analysis
             {
                 MessageBox.Show("Please Enter a File into the Box", "No File Found");
             }
-            //TODO - Check the contents of the rows in the datatable, especially the production data, to see if there are any blanks or non-numbers mixed in.
             else
             {
                 dataTable = GetDataTable(DataListBox.Items[0].ToString());
