@@ -2,7 +2,6 @@
 using System;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using static Decline_Curve_Analysis.Home;
@@ -21,6 +20,30 @@ namespace Decline_Curve_Analysis
         internal static DataTable resultsTable = new DataTable();
         private void Graph_Load(object sender, EventArgs e)
         {
+            ChartArea declineChartArea = new ChartArea { Name = "Decline Chart Area" };
+            declineChartArea.AxisX.Interval = 1D;
+            declineChartArea.AxisX.MajorGrid.LineColor = Color.LightGray;
+
+            //make the the interval of the y-axis to auto adjust to the maximum value of the production data.
+            double maxValue = dataTable.AsEnumerable().Select(x => Convert.ToDouble(x[dataTable.Columns[1]])).ToArray().Max();
+
+            if (maxValue > 800)
+            {
+                declineChartArea.AxisY.Interval = 75D;
+            }
+            else if (maxValue < 100)
+            {
+                declineChartArea.AxisY.Interval = 5D;
+            }
+            else
+            {
+                declineChartArea.AxisY.Interval = 25D;
+            }
+            declineChartArea.AxisY.MajorGrid.LineColor = Color.LightGray;
+            DeclineGraph.ChartAreas.Add(declineChartArea);
+            DeclineGraph.Series[0].ChartArea = "Decline Chart Area";
+            DeclineGraph.Series[1].ChartArea = "Decline Chart Area";
+
             TabulizeResultsButton.Enabled = false;
             DeclineGraph.ChartAreas[0].AxisX.Title = dataTable.Columns[0].ToString();
             DeclineGraph.ChartAreas[0].AxisY.Title = dataTable.Columns[1].ToString();
