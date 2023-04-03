@@ -1,5 +1,4 @@
-﻿using static Decline_Curve_Analysis.DataInput;
-
+﻿
 namespace Decline_Curve_Analysis
 {
     partial class Graph

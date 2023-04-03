@@ -162,7 +162,6 @@
     <EmbeddedResource Include="Results.resx">
       <DependentUpon>Results.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Decline Curve Analysis_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DataInput.datasource" />
     <None Include="Properties\DataSources\Decline_Curve_Analysis.Properties.Resources.datasource" />
