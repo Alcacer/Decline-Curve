@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using static Decline_Curve_Analysis.DataInput;
+using static Decline_Curve_Analysis.DataAnalysis;
 
 namespace Decline_Curve_Analysis
 {
