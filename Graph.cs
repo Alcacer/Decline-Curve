@@ -1,5 +1,4 @@
-﻿using MathNet.Numerics;
-using System;
+﻿using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -7,25 +6,26 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static Decline_Curve_Analysis.Home;
 using static Decline_Curve_Analysis.DataInput;
+using static Decline_Curve_Analysis.GraphCalculations;
 
 
 namespace Decline_Curve_Analysis
 {
     public partial class Graph : Form
     {
+        internal static DataTable resultsTable = new DataTable();
         public Graph()
         {
             InitializeComponent();
         }
 
-        internal static DataTable resultsTable = new DataTable();
         private void Graph_Load(object sender, EventArgs e)
         {
             ChartArea declineChartArea = new ChartArea { Name = "Decline Chart Area" };
             declineChartArea.AxisX.Interval = 1D;
             declineChartArea.AxisX.MajorGrid.LineColor = Color.LightGray;
 
-            //make the interval of the y-axis to auto adjust to the maximum value of the production data.
+            //Make the interval of the y-axis to auto adjust to the maximum value of the production data.
             double maxValue = dataTable.AsEnumerable().Select(x => Convert.ToDouble(x[dataTable.Columns[1]])).ToArray().Max();
             if (maxValue > 800)
             {
@@ -63,52 +63,9 @@ namespace Decline_Curve_Analysis
             DeclineGraph.DataBind();
         }
          
-        private void CalculateExponentialDecline(DataTable productionData, int forecastDays)
-        {
-            // Extract the production and time data from the input DataTable
-            double[] production = productionData.AsEnumerable().Select(r => Convert.ToDouble(r[productionData.Columns[1]])).ToArray();
-            double[] time = productionData.AsEnumerable().Select(r => Convert.ToDouble(r[productionData.Columns[0]])).ToArray();
-
-            // Fit an exponential decline function to the production data using linear regression
-            double[] yData = production.Select(r => Math.Log(r)).ToArray();
-            var regressionResult = Fit.Line(time, yData);
-            double Q0 = Math.Exp(regressionResult.A);
-            double D = -regressionResult.B;
-
-            // Calculate the predicted production values for the future time period
-            double lastTime = time[time.Length - 1];
-            double timeIncrement = lastTime - time[time.Length - 2]; //makes the timeincrement to follow the same order as the data in the table.
-            double[] futureTime = Enumerable.Range(1, forecastDays).Select(i => lastTime + (i * timeIncrement)).ToArray();
-
-            double[] futureProduction = futureTime.Select(t => production[production.Length-1] * Math.Exp(-D * (t - lastTime))).ToArray();
-
-            // Show the results
-            MessageBox.Show($"Initial production rate (Q0): {Q0}\n\nDecline rate (D): {D}", "Results");
-
-            //This adds the future production data to the graph
-            DataRow[] dataRows = new DataRow[forecastDays];
-            for (int i = 0; i < forecastDays; i++)
-            {
-                DataRow row = productionData.NewRow();
-                DeclineGraph.Series["DeclineSeries"].Points.AddXY(futureTime[i].ToString(), futureProduction[i]);
-                DeclineGraph.Series["DeclineSeries"].Points[productionData.Rows.Count + i].Color = Color.Red;
-                DeclineGraph.Series["Line"].Points.AddXY(futureTime[i].ToString(), futureProduction[i]);
-                row[0] = futureTime[i];
-                row[1] = Math.Round(futureProduction[i], 2, MidpointRounding.AwayFromZero); //rounds the calculated future production data
-                dataRows[i] = row;                                                          //to 2 decimal places at most.
-            }
-            //Add the predicted values to the datatable to display it in the results form
-            foreach (DataRow row in dataRows)
-            {
-                productionData.Rows.Add(row);
-            }
-            resultsTable = productionData;
-        }
-
-
         private void RunPredictionButton_Click(object sender, EventArgs e)
         {
-            CalculateExponentialDecline(dataTable, 10);
+            resultsTable = CalculateDecline(dataTable, 10, DeclineGraph);
             TabulizeResultsButton.Enabled = true;
             RunPredictionButton.Enabled = false;
             WindowState = FormWindowState.Maximized;

@@ -123,6 +123,7 @@
     <Compile Include="Graph.Designer.cs">
       <DependentUpon>Graph.cs</DependentUpon>
     </Compile>
+    <Compile Include="GraphCalculations.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
