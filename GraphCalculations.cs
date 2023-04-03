@@ -48,8 +48,8 @@ namespace Decline_Curve_Analysis
                 declineGraph.Series["DeclineSeries"].Points[productionData.Rows.Count + i].Color = Color.Red;
                 declineGraph.Series["Line"].Points.AddXY(futureTime[i].ToString(), futureProduction[i]);
                 row[0] = futureTime[i];
-                row[1] = Math.Round(futureProduction[i], 2, MidpointRounding.AwayFromZero); //rounds the calculated future production data
-                dataRows[i] = row;                                                          //to 2 decimal places at most.
+                row[1] = Math.Round(futureProduction[i], 2, MidpointRounding.AwayFromZero); //rounds the calculated future production 
+                dataRows[i] = row;                                                          //data to 2 decimal places at most.
             }
 
             //Add the predicted values to the datatable to display it in the results form

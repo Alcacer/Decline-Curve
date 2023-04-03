@@ -4,7 +4,7 @@ using System.Data;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using static Decline_Curve_Analysis.Graph;
+
 
 namespace Decline_Curve_Analysis
 {
@@ -14,17 +14,18 @@ namespace Decline_Curve_Analysis
         {
             InitializeComponent();
         }
+
         private void Results_Load(object sender, EventArgs e)
         {
-            resultsDataGridView.DataSource = resultsTable;
-            foreach (DataGridViewColumn column in resultsDataGridView.Columns) //removed the selection of the cells in the datagridview
+            resultsDataGridView.DataSource = Graph.resultsTable;
+            foreach (DataGridViewColumn column in resultsDataGridView.Columns) //Removed the selection of the cells in the datagridview
             {                                                                  //which was causing some visual issues in the numbers when
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;      //the datagrid is scrolled up and down.
             }
         }
         private void BacktoAnalysisButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void SaveTableButton_Click(object sender, EventArgs e)
@@ -32,12 +33,12 @@ namespace Decline_Curve_Analysis
             //Saving the resulting datatable to the system storage.
             StringBuilder output = new StringBuilder();
             List<string> commaInRows = new List<string> { };
-            output.Append($"{resultsTable.Columns[0]},");
-            output.Append(resultsTable.Columns[1].ToString());
-            foreach (DataRow row in resultsTable.Rows)
+            output.Append($"{Graph.resultsTable.Columns[0]},");
+            output.Append(Graph.resultsTable.Columns[1].ToString());
+            foreach (DataRow row in Graph.resultsTable.Rows)
             {
                 output.AppendLine();
-                foreach (DataColumn column in resultsTable.Columns)
+                foreach (DataColumn column in Graph.resultsTable.Columns)
                 {
                     commaInRows.Add(row[column].ToString());
                 }

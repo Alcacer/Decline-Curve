@@ -3,19 +3,18 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using static Decline_Curve_Analysis.DataAnalysis;
 
 namespace Decline_Curve_Analysis
 {
     public partial class DataInput : Form
     {
+        //Initializing the datatable.
+        internal static DataTable dataTable;
+        
         public DataInput()
         {
             InitializeComponent();
         }
-
-        //Initializing the datatable.
-        internal static DataTable dataTable;
 
         private void BrowseButton_Click(object sender, EventArgs e)
         {
@@ -39,7 +38,7 @@ namespace Decline_Curve_Analysis
             else
             {
                 //The GetDataTable function is from the DataAnalysis class, which is used to analyse the data and return a datatable.
-                dataTable = GetDataTable(DataListBox.Items[0].ToString(), DifferentColumnsLinkLabel); 
+                dataTable = DataAnalysis.GetDataTable(DataListBox.Items[0].ToString(), DifferentColumnsLinkLabel); 
                
                 if (dataTable != null)
                 {

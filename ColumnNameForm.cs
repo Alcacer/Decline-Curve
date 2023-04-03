@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using static Decline_Curve_Analysis.DataAnalysis;
 
 namespace Decline_Curve_Analysis
 {
@@ -16,8 +15,8 @@ namespace Decline_Curve_Analysis
         {
             if(DaysTextBox.Text.Trim() != "" && ProductionTextbox.Text.Trim() != "")
             {
-                requiredColumns[0] = DaysTextBox.Text.ToLower();
-                requiredColumns[1] = ProductionTextbox.Text.ToLower();
+                DataAnalysis.requiredColumns[0] = DaysTextBox.Text.ToLower();
+                DataAnalysis.requiredColumns[1] = ProductionTextbox.Text.ToLower();
                 Close();
             }
         }
