@@ -38,7 +38,7 @@ namespace Decline_Curve_Analysis
             else
             {
                 //The GetDataTable function is from the DataAnalysis class, which is used to analyse the data and return a datatable.
-                dataTable = DataAnalysis.GetDataTable(DataListBox.Items[0].ToString(), DifferentColumnsLinkLabel); 
+                dataTable = DataAnalysis.GetDataTable(DataListBox.Items[0].ToString()); 
                
                 if (dataTable != null)
                 {

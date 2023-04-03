@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Decline Curve Analysis.exe" size="58304">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Decline Curve Analysis.exe" size="59328">
       <assemblyIdentity name="Decline Curve Analysis" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DJC6dEViyQY2TkkkvwC+TeL5NH1Qq4mxYiX0a2Un5ik=</dsig:DigestValue>
+        <dsig:DigestValue>cxn7tvveYnsUuocq4CHCtlhkx2AwMqJhulz+g6BPdao=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -11,7 +11,7 @@ namespace Decline_Curve_Analysis
         internal static List<string> requiredColumns = new List<string> { "days", "production rate" };
         private static int firstHeaderNumber, secondHeaderNumber;
 
-        internal static DataTable GetDataTable(string filePath, LinkLabel differentColumnLinkLabel)
+        internal static DataTable GetDataTable(string filePath)
         {
 
             DataTable dataTable = new DataTable();
@@ -38,11 +38,8 @@ namespace Decline_Curve_Analysis
                         lowercaseHeaders.Contains(requiredColumns[1])))
                     {
                         MessageBox.Show("The required columns could not be found.\n" +
-                            $"Please make sure you have both the {requiredColumns[0]} and {requiredColumns[1]} columns in your file.", "Missing Columns");
-                        if (!differentColumnLinkLabel.Visible)
-                        {
-                            differentColumnLinkLabel.Show();
-                        }
+                            $"Please make sure you have both the {requiredColumns[0]} and {requiredColumns[1]} columns in your file.",
+                            "Missing Columns");
                         return null;
                     }
 

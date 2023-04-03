@@ -32,3 +32,7 @@ C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\System.ValueTuple.dll
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\MathNet.Numerics.xml
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\System.ValueTuple.xml
 C:\Users\Alcacer\Desktop\Decline Curve Analysis\obj\Debug\Decline_Curve_Analysis.ColumnNameForm.resources
+C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\Decline Curve Analysis.exe.manifest
+C:\Users\Alcacer\Desktop\Decline Curve Analysis\bin\Debug\Decline Curve Analysis.application
+C:\Users\Alcacer\Desktop\Decline Curve Analysis\obj\Debug\Decline Curve Analysis.exe.manifest
+C:\Users\Alcacer\Desktop\Decline Curve Analysis\obj\Debug\Decline Curve Analysis.application

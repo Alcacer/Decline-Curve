@@ -114,7 +114,6 @@
             this.DifferentColumnsLinkLabel.TabStop = true;
             this.DifferentColumnsLinkLabel.Text = "Columns named differently?";
             this.DifferentColumnsLinkLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.DifferentColumnsLinkLabel.Visible = false;
             this.DifferentColumnsLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.DifferentColumnsLinkLabel_LinkClicked);
             // 
             // DataInput
